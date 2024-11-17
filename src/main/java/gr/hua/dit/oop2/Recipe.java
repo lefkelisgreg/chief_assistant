@@ -3,7 +3,6 @@ package gr.hua.dit.oop2;
 import java.util.*;
 
 public class Recipe {
-    private String title;
     private Map<String, String> ingredients;
     private List<String> utensils;
     private List<String> steps;
@@ -15,40 +14,28 @@ public class Recipe {
         this.steps = new ArrayList<>();
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
+    public void addIngredient(String name, String quantity) {
+        ingredients.put(name, quantity);
     }
 
     public Map<String, String> getIngredients() {
         return ingredients;
     }
 
-    public void addIngredient(String ingredient, String quantity) {
-        this.ingredients.put(ingredient, quantity);
+    public void addUtensil(String utensil) {
+        utensils.add(utensil);
     }
 
     public List<String> getUtensils() {
         return utensils;
     }
 
-    public void addUtensil(String utensil) {
-        this.utensils.add(utensil);
+    public void addStep(String step) {
+        steps.add(step);
     }
 
     public List<String> getSteps() {
         return steps;
-    }
-
-    public void addStep(String step) {
-        this.steps.add(step);
-    }
-
-    public int getTotalTime() {
-        return totalTime;
     }
 
     public void addTime(String time) {
@@ -57,5 +44,29 @@ public class Recipe {
             totalTime += Integer.parseInt(parts[0]);
         }
     }
+
+    public int getTotalTime() {
+        return totalTime;
+    }
+
+    public void print() {
+        System.out.println("Υλικά:");
+        ingredients.forEach((ingredient, quantity) ->
+                System.out.println(ingredient + " " + quantity)
+        );
+
+        System.out.println("\nΣκεύη:");
+        utensils.forEach(System.out::println);
+
+        System.out.println("\nΣυνολική ώρα:");
+        System.out.println(totalTime + " minutes");
+
+        System.out.println("\nΒήματα:");
+        int stepNumber = 1;
+        for (String step : steps) {
+            System.out.println(stepNumber++ + ". " + step);
+        }
+    }
 }
+
 
