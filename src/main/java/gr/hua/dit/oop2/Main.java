@@ -12,7 +12,6 @@ public class Main {
 
         // Έλεγχος λειτουργιών
         if (args[0].equals("-list")) {
-            // Λειτουργία 2: Δημιουργία λίστας αγορών
             if (args.length < 2) {
                 System.out.println("Παρακαλώ δώστε τουλάχιστον ένα αρχείο συνταγής.");
                 return;
@@ -25,7 +24,6 @@ public class Main {
                 System.err.println("Σφάλμα κατά την ανάγνωση των αρχείων: " + e.getMessage());
             }
         } else {
-            // Λειτουργία 1: Εμφάνιση συνταγής
             String recipeFile = args[0];
             try {
                 Recipe recipe = RecipeParser.parseCookFile(recipeFile);
