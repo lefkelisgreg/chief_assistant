@@ -1,15 +1,18 @@
 package gr.hua.dit.oop2;
 
+import javax.sound.sampled.AudioFormat;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
 import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.util.*;
 
 public class RecipeParser {
     public static Recipe parseCookFile(String filePath) throws IOException {
-        BufferedReader reader = new BufferedReader(new FileReader(filePath));
+        BufferedReader reader = new BufferedReader(new InputStreamReader(new FileInputStream(filePath), StandardCharsets.UTF_8));
+        //BufferedReader reader = new BufferedReader(new FileReader(filePath));
         String line;
         Recipe recipe = new Recipe();
         StringBuilder stepBuilder = new StringBuilder();
