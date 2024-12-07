@@ -1,6 +1,10 @@
 package gr.hua.dit.oop2;
 
 import java.io.*;
+import java.nio.charset.Charset;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.*;
 
 public class Main {
@@ -30,6 +34,19 @@ public class Main {
             } catch (IOException e) {
                 System.err.println("Σφάλμα κατά την ανάγνωση του αρχείου: " + e.getMessage());
             }
+        }
+
+        try {
+            // Specify the correct encoding (e.g., UTF-8 or ISO-8859-7)
+            Charset charset = Charset.forName("UTF-8"); // Replace with "ISO-8859-7" if needed
+            Path path = Paths.get("src/main/resources/test.cook");
+
+            // Read the file with the specified encoding
+            String content = Files.readString(path, charset);
+
+            System.out.println(content); // Print the correctly decoded content
+        } catch (IOException e) {
+            System.err.println("Error reading the file: " + e.getMessage());
         }
     }
 
