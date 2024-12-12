@@ -25,10 +25,10 @@ First run ` mvn package` to create the JAR file.
 java -jar target/chefa-1.0-SNAPSHOT.jar <your-cook-file>
 ```
 
-#### Let's Run our example `test.cook` file.
+#### Let's Run our example `pancakes.cook` file.
 `Just Copy the Code`
 ```bash
-java -jar target/chefa-1.0-SNAPSHOT.jar src/main/resources/test.cook
+java -jar target/chefa-1.0-SNAPSHOT.jar src/main/resources/pancakes.cook
 ```
 Replace `<your-cook-file>` with the .cook file name. If the file is not in the project folder, provide the absolute path. If the file doesn't exist, the app will create it and add new events/tasks; otherwise, it will update the existing file.
 

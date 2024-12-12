@@ -73,12 +73,29 @@ public class RecipeParser {
                     recipe.addIngredient(ingredient.trim(), quantity.trim());
                 }
             } else if (token.startsWith("#")) {
-                // Αν το token δεν περιέχει αγκύλες, το θεωρούμε μια λέξη
-                String utensil = token.substring(1).trim(); // Αφαιρούμε το "#"
-                recipe.addUtensil(utensil); // Προσθήκη του σκεύους
+
+                // Κανονική έκφραση για σκεύη που περιέχουν πολλές λέξεις πριν από αγκύλες
+                String utensilRegex =  "#[^\\s]+\\{.*?\\}|#[^\\s]+(\\s[^\\s]+)+\\{.*?\\}" ;
+                Pattern utensilPattern = Pattern.compile(utensilRegex);
+                Matcher utensilMatcher = utensilPattern.matcher(token);
+
+                if (utensilMatcher.find()) {
+
+                    // Εξάγουμε όλες τις λέξεις πριν από τις αγκύλες
+                    String matchedUtensil = utensilMatcher.group(1); // Το μέρος με τις λέξεις
+                    System.out.println(matchedUtensil);  // Εκτυπώνουμε το όνομα του σκεύους χωρίς τις αγκύλες
+                    // Προσθήκη του σκεύους στη συνταγή
+                    recipe.addUtensil(matchedUtensil.trim());
+
+                    } else {
+                    // Για απλά σκεύη χωρίς αγκύλες
+                    String utensil = token.substring(1).trim(); // Αφαιρούμε το "#"
+                    recipe.addUtensil(utensil);
+                    }
+
                 } else if (token.startsWith("~")) {
                     // Αν το token ξεκινά με "~", προσθέτουμε το χρόνο
-                    recipe.addTime(token.substring(2, token.length() - 2));
+                    recipe.addTime(token.substring(2, token.length() - 1));
                     // Αφαιρεί το "~{" από την αρχή και το "}" από το τέλος
                 }
             }
