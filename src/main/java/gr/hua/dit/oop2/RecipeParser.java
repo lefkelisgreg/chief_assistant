@@ -40,13 +40,13 @@ public class RecipeParser {
     }
 
     private static void parseLineDetails(Recipe recipe, String line) {
-        // Κανονική έκφραση για αναγνώριση υλικών με ποσότητες
+        // Κανονική έκφραση για αναγνώριση υλικών με ποσότητες σε αγκύλες
         String regex = "@[^\\s]+\\{.*?\\}|@[^\\s]+(\\s[^\\s]+)+\\{.*?\\}";
         Pattern pattern = Pattern.compile(regex);
         Matcher matcher = pattern.matcher(line);
 
         // Επεξεργασία της κάθε γραμμής
-        String[] tokens = line.split("\\s+");
+        String[] tokens = line.split("\\s+"); // Χωρίζουμε την γραμμή σε tokens εκεί που υπάρχουν κενά
         for (String token : tokens) {
             if (token.startsWith("@")) {
                 // Έλεγχος αν το token είναι υλικό και περιέχει αγκύλες
@@ -76,6 +76,7 @@ public class RecipeParser {
                 } else if (token.startsWith("~")) {
                     // Αν το token ξεκινά με "~", προσθέτουμε το χρόνο
                     recipe.addTime(token.substring(2, token.length() - 2));
+                    // Αφαιρεί το "~{" από την αρχή και το "}" από το τέλος
                 }
             }
         }
