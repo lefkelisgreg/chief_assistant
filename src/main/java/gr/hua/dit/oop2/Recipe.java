@@ -41,7 +41,14 @@ public class Recipe {
     public void addTime(String time) {
         String[] parts = time.split("%");
         if (parts.length > 1 && parts[1].equals("minutes")) {
-            totalTime += Integer.parseInt(parts[0]);
+            try {
+                int value = Integer.parseInt(parts[0]); // Parse the numeric part
+                totalTime += value; // Add it to totalTime
+            } catch (NumberFormatException e) {
+                System.err.println("Invalid numeric value: " + parts[0]);
+            }
+        } else {
+            System.err.println("Invalid time format: " + time);
         }
     }
 
