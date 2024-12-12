@@ -32,6 +32,19 @@ java -jar target/chefa-1.0-SNAPSHOT.jar src/main/resources/pancakes.cook
 ```
 Replace `<your-cook-file>` with the .cook file name. If the file is not in the project folder, provide the absolute path. If the file doesn't exist, the app will create it and add new events/tasks; otherwise, it will update the existing file.
 
+#### Shopping List
+In this step, it displays a list of the ingredients we will need to make the recipes we specify as the target.
+```bash 
+java -jar target/chefa-1.0-SNAPSHOT.jar -list <your-cook-file1> <your-cook-file2> ...
+```
+#### Let's Run our example `pancakes.cook` and `pizza.cook` file.
+`Just Copy the Code`
+```bash
+java -jar target/chefa-1.0-SNAPSHOT.jar -list src/main/resources/pizza.cook src/main/resources/pancakes.cook
+```
+Replace `<your-cook-file>` with the .cook file name. If the file is not in the project folder, provide the absolute path. If the file doesn't exist, the app will create it and add new events/tasks; otherwise, it will update the existing file.
+
+
 # -------------------------------------------------------
 
 
