@@ -50,18 +50,21 @@ public class RecipeParser {
         for (String token : tokens) {
             if (token.startsWith("@")) {
                 // Έλεγχος αν το token είναι υλικό και περιέχει αγκύλες
+
                 if (matcher.find()) {
+                    // Εξαγωγή του ταιριασμένου token
+                    String matchedToken = matcher.group();
                     // Έλεγχος για το αν το token περιέχει ανεπιθύμητα σύμβολα (# ή ~)
-                    if (token.contains("#") || token.contains("~")) {
+                    if (matchedToken.contains("#") || matchedToken.contains("~")) {
                         // Διαχωρίζουμε το token από τα ανεπιθύμητα σύμβολα (# ή ~)
                         String cleanToken = token.split("[#~]")[0]; // Κρατάμε μόνο το μέρος πριν το # ή ~
-                        String ingredient = cleanToken.substring(1).trim(); // Αφαιρούμε το "@" και κρατάμε το υλικό
-
+                        // Αν το cleanToken περιέχει κενά, κρατάμε μόνο το πρώτο μέρος
+                        String ingredient = cleanToken.substring(1).split("\\s+")[0].trim(); // Αφαιρούμε το "@" και κρατάμε το υλικό
                         // Προσθήκη του υλικού στη συνταγή με κενή ποσότητα
                         recipe.addIngredient(ingredient, "");
+                        // Συνεχίζουμε στο επόμενο token
                         continue;
                     }
-                    String matchedToken = matcher.group();
                     String[] parts = matchedToken.substring(1).split("\\{");
                     String ingredient = parts[0];
                     String quantity = parts.length > 1 ? parts[1].replace("}", "") : "";
@@ -70,7 +73,7 @@ public class RecipeParser {
                     recipe.addIngredient(ingredient.trim(), quantity.trim());
                 }
             } else if (token.startsWith("#")) {
-                // Αν το token δεν περιέχει αγκύλες, το θεωρούμε απλό σκεύος χωρίς λεπτομέρειες
+                // Αν το token δεν περιέχει αγκύλες, το θεωρούμε μια λέξη
                 String utensil = token.substring(1).trim(); // Αφαιρούμε το "#"
                 recipe.addUtensil(utensil); // Προσθήκη του σκεύους
                 } else if (token.startsWith("~")) {
