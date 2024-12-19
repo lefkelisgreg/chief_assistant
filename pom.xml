@@ -15,6 +15,14 @@
         </repository>
     </repositories>
 
+    <dependencies>
+        <dependency>
+            <groupId>gr.hua.dit.oop2</groupId>
+            <artifactId>countdown</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <java.version>17</java.version>
