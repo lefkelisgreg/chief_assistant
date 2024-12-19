@@ -81,7 +81,7 @@ public class MainWindow extends JFrame {
     }
 
     private void generateShoppingList() {
-        ShoppingListWindow shoppingListWindow = new ShoppingListWindow(this, recipes);
+        ShoppingListWindow shoppingListWindow = new ShoppingListWindow( this, recipes);
         shoppingListWindow.setVisible(true);
     }
 

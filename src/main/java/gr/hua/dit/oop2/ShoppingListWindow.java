@@ -58,9 +58,33 @@ public class ShoppingListWindow extends JDialog {
         return shoppingList;
     }
 
-    private String combineQuantities(String existingQuantity, String newQuantity) {
-        // Συνδυασμός ποσοτήτων (μπορεί να γίνει πιο σύνθετη επεξεργασία αν χρειάζεται)
-        return existingQuantity + " + " + newQuantity;
+    //  private String combineQuantities(String existingQuantity, String newQuantity) {
+    //    // Συνδυασμός ποσοτήτων (μπορεί να γίνει πιο σύνθετη επεξεργασία αν χρειάζεται)
+    //     return existingQuantity + " + " + newQuantity;
+    //  }
+
+    // Συνδυασμός ποσοτήτων (π.χ. 500%gr + 125%gr )
+    public static String combineQuantities(String q1, String q2) {
+        // Διαχωρισμός της ποσότητας και της μονάδας
+        String[] parts1 = q1.split("%");
+        String[] parts2 = q2.split("%");
+
+        if (parts1.length == 2 && parts2.length == 2 && parts1[1].equals(parts2[1])) {
+            // Αν οι μονάδες είναι ίδιες (π.χ. "gr")
+            try {
+                int quantity1 = Integer.parseInt(parts1[0]);
+                int quantity2 = Integer.parseInt(parts2[0]);
+
+                // Συνδυάζουμε τις ποσότητες
+                int totalQuantity = quantity1 + quantity2;
+                return totalQuantity + " " + parts1[1];
+            } catch (NumberFormatException e) {
+                // Αν δεν μπορούμε να μετατρέψουμε τις ποσότητες σε αριθμούς
+                return q1 + " + " + q2;
+            }
+        } else {
+            // Αν οι μονάδες είναι διαφορετικές ή το σχήμα δεν είναι σωστό
+            return q1 + " + " + q2;
+        }
     }
 }
-
