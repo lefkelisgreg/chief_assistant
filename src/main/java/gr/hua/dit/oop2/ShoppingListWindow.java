@@ -59,7 +59,7 @@ public class ShoppingListWindow extends JDialog {
     }
 
     //  private String combineQuantities(String existingQuantity, String newQuantity) {
-    //    // Συνδυασμός ποσοτήτων (μπορεί να γίνει πιο σύνθετη επεξεργασία αν χρειάζεται)
+    //    // Συνδυασμός ποσοτήτων
     //     return existingQuantity + " + " + newQuantity;
     //  }
 
