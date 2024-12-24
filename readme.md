@@ -76,12 +76,13 @@ Replace `<your-cook-file>` with the .cook file name. If the file is not in the p
 5. **`ShoppingListGenerator.java`**:
 
     - Consolidates ingredients from multiple recipes into a single shopping list.
+   
 
 
 License Information
 -------------------
 
-The software developed under the auspices of the Department of Informatics and Telecommunications (DIT) at the University of Athens (HUA).
+The software developed under the auspices of the Department of Informatics and Telematics (DIT) at the Harokopeio University of Athens (HUA).
 
 ### HUA Developers
 ```

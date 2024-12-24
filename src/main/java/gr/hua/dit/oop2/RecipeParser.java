@@ -83,7 +83,6 @@ public class RecipeParser {
 
                     // Εξάγουμε όλες τις λέξεις πριν από τις αγκύλες
                     String matchedUtensil = utensilMatcher.group(1); // Το μέρος με τις λέξεις
-                    System.out.println(matchedUtensil);  // Εκτυπώνουμε το όνομα του σκεύους χωρίς τις αγκύλες
                     // Προσθήκη του σκεύους στη συνταγή
                     recipe.addUtensil(matchedUtensil.trim());
 

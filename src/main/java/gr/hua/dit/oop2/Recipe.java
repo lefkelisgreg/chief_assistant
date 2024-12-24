@@ -15,7 +15,28 @@ public class Recipe {
     }
 
     public void addIngredient(String name, String quantity) {
-        ingredients.put(name, quantity);
+
+        if (quantity.contains("%")) {
+            String[] parts = quantity.split("%");
+            int value = Integer.parseInt(parts[0]);
+            String unit = parts[1];
+
+            // Μετατροπή αν η μονάδα είναι κιλά
+            if (unit.equals("kg")) {
+                value = UnitConverter.convertWeight(unit, "gr", value);
+                unit = "gr";
+            }
+            // Μετατροπή αν η μονάδα είναι λίτρα
+            if (unit.equals("l")) {
+                value = UnitConverter.convertLiquid(unit, "ml", value);
+                unit = "ml";
+            }
+
+            ingredients.put(name, value + " " + unit);
+        } else {
+            ingredients.put(name, quantity);
+        }
+
     }
 
     public Map<String, String> getIngredients() {
@@ -39,17 +60,20 @@ public class Recipe {
     }
 
     public void addTime(String time) {
-        String[] parts = time.split("%");
-        if (parts.length > 1 && parts[1].equals("minutes")) {
-            try {
-                int value = Integer.parseInt(parts[0]); // Parse the numeric part
-                totalTime += value; // Add it to totalTime
-            } catch (NumberFormatException e) {
-                System.err.println("Invalid numeric value: " + parts[0]);
+        if (time.contains("%")) {
+            String[] parts = time.split("%");
+            int value = Integer.parseInt(parts[0]);
+            String unit = parts[1];
+
+            // Μετατροπή αν η μονάδα είναι ώρες
+            if (unit.equals("hours")) {
+                value = UnitConverter.convertTime(unit, "minutes", value);
+                unit = "minutes";
             }
-        } else {
-            System.err.println("Invalid time format: " + time);
+
+            totalTime += value;
         }
+
     }
 
     public int getTotalTime() {
