@@ -4,11 +4,13 @@
 
 
 
+
 # chief_assistantApp
 
 ---
 
-The chief_assistantApp is a Java-based project designed to analyzes cooking recipes and prints the execution steps using .cook files.
+The chief_assistantApp is a Java-based project designed to analyze cooking recipes using .cook files. It includes 2 parts in both of which it gives user the ability to view the recipe in a well orginized form, to make a shopping list for all the ingredients included in the .cook files and finally view and follow the recipe step by step. 
+The 1st part is running using the terminal and the 2nd includes a GUI application.
 
 It leverages UTF-8 encoding and Maven for project management.
 
@@ -131,42 +133,47 @@ Users can proceed to the next step after completing the current one.
       - Display a recipe.
       - Generate a shopping list.
 
+
 2. **`Recipe.java`**:
 
    - Represents a recipe with attributes such as ingredients, utensils, steps, and total time.
    - Contains methods to add and retrieve recipe details.
 
+
 3. **`RecipeParser.java`**:
 
    - Handles parsing of recipe files to extract details like ingredients, utensils, and steps.
 
-4. **`RecipePrinter.java`**:
 
-   - Formats and prints the recipe details to the console.
-
-5. **`ShoppingListGenerator.java`**:
+4. **`ShoppingListGenerator.java`**:
 
    - Consolidates ingredients from multiple recipes into a single shopping list.
 
-6. **`ΜainWindow.java`**:
+
+5. **`ΜainWindow.java`**:
 
    - The primary GUI class providing functionality for managing recipes.
 
-7. **`RecipeViewer.java`**:
+
+6. **`RecipeViewer.java`**:
 
    -  Displays the details of a selected recipe in a new window.
 
-8. **`ShoppingListWindow.java`**:
+
+7. **`ShoppingListWindow.java`**:
 
    - Displays the aggregated shopping list for all loaded recipes.
 
-9. **`RecipeExecutionWindow.java`**:   
+
+8. **`RecipeExecutionWindow.java`**:   
 
    - Guides the user through the interactive execution of a recipe.
 
-10. **`UnitConvert.java`**:
+
+9. **`UnitConvert.java`**:
 
     - It is responsible for converting kilos into grams , liters into milliliters and hours into minutes when an ingredient is saved in a recipe.
+
 
 ---
 
